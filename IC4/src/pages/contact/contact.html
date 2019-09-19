@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      To Do Application
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg">    <ion-item>
+  <ion-input [(ngModel)]="todo" placeholder="Insert some todo here here" type="text"></ion-input>
+
+</ion-item>
+
+  <button ion-button (click)="add()">ADD</button>
+  <ion-item>
+    <ion-input [(ngModel)]="search" placeholder="Insert search element" type="text"></ion-input>
+
+  </ion-item>
+  <button ion-button (click)="add1()">ADD</button>
+  <ion-list>
+    <ion-item-sliding *ngFor="let t of todos">
+      <ion-item>
+        {{t}}
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="delete(t)">
+          <ion-icon name="trash"></ion-icon> Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <div *ngIf="searchList != null">
+    <ion-label>{{searchList.itemListElement[0].result.name}}</ion-label>
+    <ion-label>{{searchList.itemListElement[0].result.description}}</ion-label>
+    <ion-label>{{searchList.itemListElement[0].result.detailedDescription.articleBody}}</ion-label>
+    <img src="{{searchList.itemListElement[0].result.image.contentUrl}}"  align="center style="width: 70px; height: 50px;""/>
+  </div>
+
+</ion-content>
